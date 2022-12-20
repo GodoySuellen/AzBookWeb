@@ -12,7 +12,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
   @Input() sidebarId: string = "sidebar1";
 
   public newMessages = new Array(4)
-  public newTasks = new Array(5)
+  public newTasks = new Array(2)
   public newNotifications = new Array(5)
 
   public themeSwitch = new UntypedFormGroup({

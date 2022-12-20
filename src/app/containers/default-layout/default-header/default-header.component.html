@@ -28,6 +28,7 @@
       </c-nav-item>
     </c-header-nav>
 
+    <!-- Botão do Dark Mode -->
     <c-header-nav class="ms-auto me-4">
       <form [formGroup]="themeSwitch" cForm>
         <c-button-group aria-label="Theme switch">
@@ -42,7 +43,7 @@
             (click)="setTheme('light')"
             cButton
             cFormCheckLabel
-            color="primary"
+            color="warning"
           >
             <svg cIcon name="cilSun"></svg>
           </label>
@@ -57,7 +58,7 @@
             (click)="setTheme('dark')"
             cButton
             cFormCheckLabel
-            color="primary"
+            color="dark"
           >
             <svg cIcon name="cilMoon"></svg>
           </label>
@@ -67,23 +68,26 @@
 
     <!-- todo: header nav dropdown menus  -->
     <c-header-nav class="d-none d-lg-flex">
-      <ng-container *ngTemplateOutlet="notifyDropdown"></ng-container>
+      <!--ng-container *ngTemplateOutlet="notifyDropdown"></ng-container-->
       <ng-container *ngTemplateOutlet="taskDropdown"></ng-container>
-      <ng-container *ngTemplateOutlet="messagesDropdown"></ng-container>
+      <!--ng-container *ngTemplateOutlet="messagesDropdown"></ng-container-->
     </c-header-nav>
+
+    <!-- todo: header nav usuário menus  -->
     <c-header-nav class="ms-3 me-sm-4">
       <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
     </c-header-nav>
 
-    <!--aside toggler-->
-    <button
+    <!--aside toggler / último icone-->
+    <!--button
       toggle="visible"
       cHeaderToggler
       cSidebarToggle="aside1"
       class="px-md-0 me-md-3 d-none d-sm-block"
     >
       <svg cIcon name="cilApplicationsSettings" size="lg"></svg>
-    </button>
+    </button-->
+
   </c-container>
   <c-header-divider></c-header-divider>
   <c-container [fluid]="true">
@@ -99,6 +103,8 @@
       cDropdownToggle
       class="py-0"
     >
+
+    <!-- avatar do usuário-->
       <c-avatar
         cTextColor="primary"
         shape="rounded-1"
@@ -109,7 +115,7 @@
       </c-avatar>
     </a>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
-      <li>
+      <!--li>
         <h6 cDropdownHeader class="bg-light dark:bg-white dark:bg-opacity-10 fw-semibold py-2">Account</h6>
       </li>
       <li>
@@ -147,7 +153,7 @@
             42
           </c-badge>
         </a>
-      </li>
+      </li-->
       <li>
         <h6 cDropdownHeader class="bg-light dark:bg-white dark:bg-opacity-10 fw-semibold py-2">Settings</h6>
       </li>
@@ -155,16 +161,16 @@
       <li>
         <a [routerLink]="[]" cDropdownItem>
           <svg cIcon class="me-2" name="cilUser"></svg>
-          Profile
+          Perfil
         </a>
       </li>
       <li>
         <a [routerLink]="[]" cDropdownItem>
           <svg cIcon class="me-2" name="cilSettings"></svg>
-          Settings
+          Configurações
         </a>
       </li>
-      <li>
+      <!--li>
         <a [routerLink]="[]" cDropdownItem>
           <svg cIcon class="me-2" name="cilCreditCard"></svg>
           Payments
@@ -181,14 +187,14 @@
             42
           </c-badge>
         </a>
-      </li>
+      </li-->
       <li>
         <hr cDropdownDivider/>
       </li>
       <li>
         <a [routerLink]="[]" cDropdownItem>
           <svg cIcon class="me-2" name="cilLockLocked"></svg>
-          Lock Account
+          Sair
         </a>
       </li>
       <li></li>
@@ -390,6 +396,7 @@
   </c-dropdown>
 </ng-template>
 
+<!-- Lista de Unidades-->
 <ng-template #taskDropdown>
   <c-dropdown alignment="end" variant="nav-item">
     <a [caret]="false" cDropdownToggle href>
@@ -405,30 +412,44 @@
     </a>
     <div cDropdownMenu class="pt-0">
       <h6 cDropdownHeader class="bg-light dark:bg-white dark:bg-opacity-10">
-        <strong>You have {{ newTasks.length ?? 0 }} pending tasks</strong>
+        <!--strong>You have {{ newTasks.length ?? 0 }} pending tasks</strong-->
+        <strong>Lista de Unidades</strong>
       </h6>
+      <!-- itens-->
       <a [routerLink]="[]" cDropdownItem class="d-block">
         <div class="small mb-1">
-          Upgrade NPM &amp; Bower
+          Salão do Gustavo
           <span class="float-end">
-            <strong>0%</strong>
+            <strong></strong>
           </span>
         </div>
         <c-progress thin>
-          <c-progress-bar [value]="0" color="info-gradient"></c-progress-bar>
+          <c-progress-bar [value]="100" color="success-gradient"></c-progress-bar>
         </c-progress>
       </a>
       <a [routerLink]="[]" cDropdownItem class="d-block">
         <div class="small mb-1">
-          ReactJS Version
+          Salão do André
           <span class="float-end">
-            <strong>25%</strong>
+            <strong></strong>
           </span>
         </div>
         <c-progress thin>
-          <c-progress-bar [value]="25" color="danger-gradient"></c-progress-bar>
+          <c-progress-bar [value]="100" color="danger-gradient"></c-progress-bar>
         </c-progress>
       </a>
+      <a [routerLink]="[]" cDropdownItem class="d-block">
+        <div class="small mb-1">
+          Salão da Suellen
+          <span class="float-end">
+            <strong></strong>
+          </span>
+        </div>
+        <c-progress thin>
+          <c-progress-bar [value]="100" color="danger-gradient"></c-progress-bar>
+        </c-progress>
+      </a>
+      <!--
       <a [routerLink]="[]" cDropdownItem class="d-block">
         <div class="small mb-1">
           VueJS Version
@@ -467,9 +488,9 @@
             color="success-gradient"
           ></c-progress-bar>
         </c-progress>
-      </a>
+      </a>-->
       <a [routerLink]="[]" cDropdownItem class="text-center border-top">
-        <strong>View all tasks</strong>
+        <strong>Todas as Unidades</strong>
       </a>
     </div>
   </c-dropdown>
